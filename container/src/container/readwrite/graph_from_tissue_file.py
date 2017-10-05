@@ -164,18 +164,18 @@ def graph_from_TissueDB(filename, meshname="mesh_id", posname="position"):
 #        filter_label = False
 #        labels = list(analysis.labels())
 #        if background in labels : del labels[labels.index(background)]
-#        neigborhood = analysis.neighbors(labels)
+#        neighborhood = analysis.neighbors(labels)
 #    else:
 #        filter_label = True
 #        if isinstance(labels,int) : labels = [labels]
 #        # -- We don't want to have the "outer cell" (background) and "removed cells" (0) in the graph structure.
 #        if 0 in labels: labels.remove(0)
 #        if background in labels: labels.remove(background)
-#        neigborhood = analysis.neighbors(labels)
+#        neighborhood = analysis.neighbors(labels)
 
 #    labelset = set(labels)
 
-#    graph, label2vertex, edges = generate_graph_topology(labels, neigborhood)
+#    graph, label2vertex, edges = generate_graph_topology(labels, neighborhood)
 
 #    if 'boundingbox' in default_properties : 
 #        add_vertex_property_from_label_and_value(graph,'boundingbox',labels,analysis.boundingbox(labels,real=bbox_as_real),mlabel2vertex=label2vertex)
@@ -206,7 +206,7 @@ def graph_from_TissueDB(filename, meshname="mesh_id", posname="position"):
 
 #    if 'wall_surface' in default_properties : 
 #        filtered_edges = {}
-#        for source,targets in neigborhood.iteritems():
+#        for source,targets in neighborhood.iteritems():
 #            if source in labelset :
 #                filtered_edges[source] = [ target for target in targets if source < target and target in labelset ]
 #        wall_surfaces = analysis.wall_surfaces(filtered_edges,real=default_real_property)
